@@ -1,0 +1,11 @@
+.env
+node_modules/
+.vscode/
+__pycache__/
+.ipynb_checkpoints/
+anaconda3/
+*.log
+NTUSER.DAT
+*.ini
+OneDrive/
+

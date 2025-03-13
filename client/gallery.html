@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#4a94d0" id="themeColor">
+    <title>Gallery - Chess Impact</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Modal Gallery Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            position: relative;
+            margin: auto;
+            padding: 0;
+            width: 80%;
+            max-width: 1200px;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-image-container {
+            height: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-image {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .thumbnails {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .thumbnail {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            margin: 0 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .thumbnail.active {
+            border-color: #fff;
+            opacity: 1;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+            color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .gallery-item {
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        /* Caption for modal images */
+        .caption-container {
+            text-align: center;
+            padding: 10px;
+            color: white;
+            margin-top: 10px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.jpg" alt="Chess Impact Logo">
+                </a>
+            </div> 
+                                
+            <!-- Navigation with constrained width -->
+            <nav>
+                <div class="container">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#signup">Sign Up</a></li>
+                        <li><a href="index.html#team">Our Team</a></li>
+                        <li><a href="index.html#tactics">Tactics</a></li>
+                        <li><a href="index.html#events">Events</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="index.html#lessons">Lessons</a></li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div id="profile-container" style="display: none;" class="profile-dropdown">
+                <img id="profile-image" src="images/default-avatar.png" alt="Profile" class="profile-icon">
+                <div class="dropdown-menu">
+                    <div class="dropdown-header">
+                        <span id="user-name">User Name</span>
+                        <span id="user-email">user@example.com</span>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <a href="#profile" class="dropdown-item">My Profile</a>
+                    <a href="#settings" class="dropdown-item">Settings</a>
+                    <a href="#" class="dropdown-item" id="logout-button">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main>
+        <section class="container">
+            <h1>Photo Gallery</h1>
+            <p class="gallery-intro">Browse photos from our tournaments, workshops, and club meetings.</p>
+            
+            <!-- Optional: Add gallery filters -->
+            <div class="gallery-filters">
+                <button class="gallery-filter active" data-filter="all">All</button>
+                <button class="gallery-filter" data-filter="tournaments">Tournaments</button>
+                <button class="gallery-filter" data-filter="workshops">Workshops</button>
+            </div>
+            
+            <div class="gallery-container">
+                <!-- Gallery Items -->
+                <div class="gallery-item" data-category="tournaments" onclick="openGallery('bluffview')">
+                    <img src="images/gallery/2024/2024.png" alt="Bluffview Tournament 2024" onerror="this.src='images/logo.png'" width="150" height="180">
+                    <div class="gallery-caption">
+                        <h3>Bluffview Community Tournament August 2024</h3>
+                        <p>Our annual tournament brings together skilled competitors.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="workshops">
+                    <img src="images/gallery/workshop/workshop.jpg" alt="Opening Strategies Workshop" onerror="this.src='images/logo.png'">
+                    <div class="gallery-caption">
+                        <h3>Opening Strategies Workshop</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Modal Gallery for Bluffview Tournament -->
+        <div id="bluffviewGallery" class="modal">
+            <span class="close" onclick="closeGallery()">&times;</span>
+            <div class="modal-content">
+                <div class="modal-image-container">
+                    <img class="modal-image" id="currentImage">
+                </div>
+                <div class="caption-container">
+                    <p id="caption"></p>
+                </div>
+                <div class="thumbnails" id="thumbnailContainer">
+                    <!-- Thumbnails will be populated by JavaScript -->
+                </div>
+                <a class="prev" onclick="changeImage(-1)">&#10094;</a>
+                <a class="next" onclick="changeImage(1)">&#10095;</a>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Chess Impact. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#">Facebook</a>| 
+                    <a href="#">Instagram</a>|
+                    <a href="#">YouTube</a>
+                </div>
+                <p>Contact us: atharvab850@gmail.com | (555) 123-4567</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Gallery images data
+        const galleryData = {
+            'bluffview': [
+
+                {
+                    src: 'images/gallery/2024/2024_1.jpeg',
+                    alt: 'Shaking Hands :)',
+                    caption: 'Shaking Hands :)'
+                },                
+                {
+                    src: 'images/gallery/2024/2024_2.jpeg',
+                    alt: 'Players in action',
+                    caption: 'Players in action'
+                },
+                {
+                    src: 'images/gallery/2024/2024_3.jpeg',
+                    alt: 'Winners podium',
+                    caption: 'Winners podium'
+                },
+                {
+                    src: 'images/gallery/2024/2024_4.jpeg',
+                    alt: 'Perfect Move',
+                    caption: 'Perfect Move'
+                },
+                {
+                    src: 'images/gallery/2024/2024_5.jpeg',
+                    alt: 'Match gone too long :)',
+                    caption: 'Match gone too long :)'
+                },
+                {
+                    src: 'images/gallery/2024/2024_6.jpeg',
+                    alt: 'Could be a draw',
+                    caption: 'Could be a draw'
+                },   
+                {
+                    src: 'images/gallery/2024/2024_7.jpeg',
+                    alt: 'Final match',
+                    caption: 'Final match'
+                },
+                {
+                    src: 'images/gallery/2024/2024_8.jpeg',
+                    alt: 'Final match',
+                    caption: 'Final match'
+                },
+                {
+                    src: 'images/gallery/2024/2024_9.jpeg',
+                    alt: 'Final match',
+                    caption: 'Final match'
+                },
+                {
+                    src: 'images/gallery/2024/2024_10.jpeg',
+                    alt: 'Final match',
+                    caption: 'Final match'
+                }     
+                ,
+                {
+                    src: 'images/gallery/2024/2024_11.jpeg',
+                    alt: 'Prizes',
+                    caption: 'Prizes'
+                }      ,
+                {
+                    src: 'images/gallery/2024/2024_12.jpeg',
+                    alt: 'Prizes',
+                    caption: 'Prizes'
+                }      ,
+                {
+                    src: 'images/gallery/2024/2024_13.jpeg',
+                    alt: 'Final match',
+                    caption: 'Tournament Winner'
+                }                                                                                        
+            ]
+        };
+
+        let currentGallery = '';
+        let currentIndex = 0;
+        
+        // Open gallery modal
+        function openGallery(galleryId) {
+            if (galleryData[galleryId]) {
+                currentGallery = galleryId;
+                currentIndex = 0;
+                
+                // Get modal and image elements
+                const modal = document.getElementById(galleryId + 'Gallery');
+                const imageElement = document.getElementById('currentImage');
+                const captionElement = document.getElementById('caption');
+                const thumbnailContainer = document.getElementById('thumbnailContainer');
+                
+                // Clear existing thumbnails
+                thumbnailContainer.innerHTML = '';
+                
+                // Create thumbnails
+                galleryData[galleryId].forEach((img, index) => {
+                    const thumb = document.createElement('img');
+                    thumb.src = img.src;
+                    thumb.alt = img.alt;
+                    thumb.classList.add('thumbnail');
+                    if (index === 0) thumb.classList.add('active');
+                    thumb.onclick = function() {
+                        showImage(index);
+                    };
+                    thumbnailContainer.appendChild(thumb);
+                });
+                
+                // Show first image
+                showImage(0);
+                
+                // Show modal
+                modal.style.display = 'block';
+                
+                // Add keyboard navigation
+                document.addEventListener('keydown', keyboardNavigation);
+            }
+        }
+        
+        // Close gallery modal
+        function closeGallery() {
+            const modal = document.getElementById(currentGallery + 'Gallery');
+            modal.style.display = 'none';
+            document.removeEventListener('keydown', keyboardNavigation);
+        }
+        
+        // Show specific image
+        function showImage(index) {
+            const images = galleryData[currentGallery];
+            if (index >= images.length) index = 0;
+            if (index < 0) index = images.length - 1;
+            
+            currentIndex = index;
+            
+            const imageElement = document.getElementById('currentImage');
+            const captionElement = document.getElementById('caption');
+            
+            imageElement.src = images[index].src;
+            imageElement.alt = images[index].alt;
+            captionElement.innerHTML = images[index].caption;
+            
+            // Update active thumbnail
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach((thumb, i) => {
+                if (i === index) {
+                    thumb.classList.add('active');
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+        }
+        
+        // Change image (previous/next)
+        function changeImage(direction) {
+            showImage(currentIndex + direction);
+        }
+        
+        // Keyboard navigation
+        function keyboardNavigation(event) {
+            if (event.key === 'ArrowLeft') {
+                changeImage(-1);
+            } else if (event.key === 'ArrowRight') {
+                changeImage(1);
+            } else if (event.key === 'Escape') {
+                closeGallery();
+            }
+        }
+        
+        // Simple gallery filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.gallery-filter');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active class on buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter items
+                    const filter = this.getAttribute('data-filter');
+                    
+                    galleryItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

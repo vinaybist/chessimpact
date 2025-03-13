@@ -1,0 +1,137 @@
+# Chess Impact Website Content
+
+# Site Configuration
+site:
+  title: "Chess Impact"
+  theme_color: "#7868e6"
+  #google_client_id: "YOUR_GOOGLE_CLIENT_ID"
+  copyright: "2025 Chess Impact. All rights reserved."
+  contact: 
+    email: "info@chessclub.org"
+    phone: "(555) 123-4567"
+
+# Navigation Links
+navigation:
+  - name: "Home"
+    link: "#home"
+  - name: "About Us"
+    link: "#about"
+  - name: "Membership"
+    link: "#membership"
+  - name: "Sign Up"
+    link: "#signup"
+  - name: "Our Team"
+    link: "#team"
+
+# Hero Section
+hero:
+  title: "Welcome to Chess Impact"
+  description: "Bringing the joy of chess to our community and beyond. Join us in our mission to promote the royal game!"
+  button_text: "Join Our Club"
+  button_link: "#signup"
+
+# Introduction Section
+introduction:
+  title: "Introduction"
+  paragraphs:
+    - "Chess Impact was founded with the goal of fostering a vibrant chess community. Our club provides a welcoming environment for players of all ages and skill levels to learn, play, and grow in their chess journey."
+    - "Whether you're a beginner looking to learn the basics or an experienced player seeking challenging opponents, our club offers resources, events, and a supportive community to help you enjoy and improve at chess."
+
+# About Section
+about:
+  title: "Club Mission & Information"
+  mission:
+    title: "Our Mission"
+    text: "Our mission is to promote chess as an educational tool that enhances critical thinking, problem-solving skills, and sportsmanship. We aim to make chess accessible to everyone in our community through regular meetings, tournaments, and educational programs."
+  info:
+    title: "Club Information"
+    items:
+      - label: "Meeting Schedule"
+        value: "We meet every Saturday from 2:00 PM to 5:00 PM."
+      - label: "Location"
+        value: "Community Center, 123 Chess Street, Your City."
+      - label: "Activities"
+        value: "Regular club play, tournaments, chess lessons, and special events."
+      - label: "Contact"
+        value: "info@chessclub.org | (555) 123-4567"
+
+# Membership Section
+membership:
+  title: "Membership Details"
+  intro: "Joining our chess club provides you with numerous benefits and opportunities to improve your game while connecting with fellow chess enthusiasts."
+  benefits:
+    title: "Membership Benefits"
+    items:
+      - "Access to weekly club meetings and play sessions"
+      - "Free entry to club tournaments"
+      - "Discounted chess lessons from experienced coaches"
+      - "Ability to represent the club in external tournaments"
+      - "Access to club library of chess books and resources"
+      - "Regular newsletter with chess news and puzzles"
+  fees:
+    title: "Membership Fees"
+    items:
+      - label: "Annual Membership"
+        value: "$50 for adults, $30 for students/seniors"
+      - label: "Family Membership"
+        value: "$80 for up to 4 family members"
+      - label: "Trial Membership"
+        value: "First month free for new members"
+
+# Sign Up Section
+signup:
+  title: "Sign Up"
+  intro: "Ready to join our chess community? Fill out the form below to become a member of Chess Impact."
+  form:
+    heading: "Sign Up"
+    subheading: "Create an account to join our chess club"
+    google_signin: "Sign in with Google"
+    divider_text: "or sign up with email"
+    fields:
+      - id: "email"
+        label: "Email Address"
+        type: "email"
+        placeholder: "your@email.com"
+        required: true
+      - id: "password"
+        label: "Password"
+        type: "password"
+        placeholder: "Choose a secure password"
+        required: true
+    terms: "I agree to the <a href='#'>Terms and Conditions</a> and <a href='#'>Privacy Policy</a>"
+    submit_text: "Create Account"
+    success_message: "Thank you for signing up! You can now log in to your account."
+
+# Team Section
+team:
+  title: "Our Team"
+  intro: "Meet the dedicated volunteers who make our chess club possible. Our team is committed to providing the best chess experience for all members."
+  members:
+    - name: "Alex Johnson"
+      position: "Club President"
+      bio: "Chess Master with 15+ years of experience. Founded the club in 2020."
+      image: "president.jpg"  # These would be placeholders
+    - name: "Maria Rodriguez"
+      position: "Club Secretary"
+      bio: "Organizes events and manages club communications. FIDE-rated player."
+      image: "secretary.jpg"
+    - name: "David Chen"
+      position: "Head Coach"
+      bio: "International Master who leads our training sessions and workshops."
+      image: "coach.jpg"
+    - name: "Sarah Williams"
+      position: "Tournament Director"
+      bio: "Certified arbiter who organizes and oversees all club tournaments."
+      image: "director.jpg"
+
+# Footer Section
+footer:
+  social_links:
+    - name: "Facebook"
+      url: "#"
+    - name: "Twitter"
+      url: "#"
+    - name: "Instagram"
+      url: "#"
+    - name: "YouTube"
+      url: "#"

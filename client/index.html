@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+
+    <meta name="theme-color" content="#7868e6">
+    <title>Chess Impact</title>
+    <!-- Google Sign-In API -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <script src="js/auth.js"></script>
+</head>
+<body>
+   
+<header class="main-header">
+    <div class="container">
+        <div class="logo-center">
+            <a href="index.html">
+                <img src="images/logo.jpg" alt="Chess Impact Logo">
+            </a>
+        </div>
+    </div>
+</header>
+<nav>
+    <div class="container">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#signup">Sign Up</a></li>
+            <li><a href="#team">Our Team</a></li>
+            <li><a href="#tactics">Tactics</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#lessons">Lessons</a></li>
+        </ul>
+        
+        <!-- Move this inside the nav container -->
+        <div id="profile-container" style="display: none;" class="profile-dropdown">
+            <img id="profile-image" src="images/default-avatar.png" alt="Profile" class="profile-icon">
+            <div class="dropdown-menu">
+                <div class="dropdown-header">
+                    <span id="user-name">User Name</span>
+                    <span id="user-email">user@example.com</span>
+                </div>
+                <div class="dropdown-divider"></div>
+                <a href="#profile" class="dropdown-item">My Profile</a>
+                <a href="#settings" class="dropdown-item">Settings</a>
+                <a href="#" class="dropdown-item" id="logout-button">Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>   
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Home/Introduction Section -->
+        <section id="home" class="container">
+            <div class="floating-quote-container">
+                <div class="floating-quote">
+                    "I never lose. I either win or learn something."
+                    <span class="quote-attribution">- Nelson Mandela</span>
+                </div>
+            </div>               
+            <div class="hero">
+                <h2>Welcome to Chess Impact 📣</h2>
+                <p>Bringing the joy of chess to our community and beyond. Join us in our mission to promote the royal game!</p>
+                <a href="#signup" class="btn">Join Our Club</a>
+            </div>
+            
+            <h1>Introduction</h1>
+            <p>Chess Impact was founded with the goal of fostering a vibrant chess community. Our club provides a welcoming environment for players of all ages and skill levels to learn, play, and grow in their chess journey.</p>
+            <p>Whether you're a beginner looking to learn the basics or an experienced player seeking challenging opponents, our club offers resources, events, and a supportive community to help you enjoy and improve at chess.</p>
+        </section>
+        <!-- About Us Section -->
+        <section id="about" class="container">
+            <h1>Club Mission & Information</h1>
+            <h2>Our Mission</h2>
+            <p>Our mission is to promote chess as an educational tool that enhances critical thinking, problem-solving skills, and sportsmanship. We aim to make chess accessible to everyone in our community through regular meetings, tournaments, and educational programs.</p>
+            
+            <h2>Club Information</h2>
+            <p><strong>Meeting Schedule:</strong> We meet every Wednesday from 5:00 PM to 6:00 PM.</p>
+            <p><strong>Location:</strong> Bluffview Community Center, Mongolain Dr, Leander, TX.</p>
+            <p><strong>Activities:</strong> Regular club play, tournaments, free chess lessons, and special events.</p>
+            <p><strong>Contact:</strong> atharvab850@gmail.com </p>
+        </section>
+        
+        <!-- Sign Up Section -->
+        <section id="signup" class="container">
+            <h1>Sign Up</h1>
+            <p>Ready to join our chess community? Google sign-in to become a member of Chess Impact. We will send you the important clubs updates and various tournaments information</p>
+            <div class="form-container">
+                <div class="social-signup">
+                    <h3>Sign Up</h3>
+                    <p>Create an account to join our chess club by signing in with Google.</p>
+                    
+                    <!-- Google Sign-In Button -->
+                    <div id="g_id_onload"
+                        data-client_id="279266786470-l7b0kd59d4g3de0s8isrs3qknl2q4gi7.apps.googleusercontent.com"
+                        data-callback="handleCredentialResponse"
+                        data-auto_prompt="false">
+                    </div>
+                    
+                    <div class="google-btn-container" style="margin-bottom: 20px; text-align: center;">
+                        <div class="g_id_signin"
+                            data-type="standard"
+                            data-size="large"
+                            data-theme="outline"
+                            data-text="sign_in_with"
+                            data-shape="rectangular"
+                            data-logo_alignment="center">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Team Section -->
+        <section id="team" class="container">
+            <h1>Our Team</h1>
+            <p>Meet the dedicated volunteers who make our chess club possible. Our team is committed to providing the best chess experience for all members.</p>
+            
+            <div class="team-members">
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="/images/team/Atharva.jpg" alt="Club President">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-name">Atharva Bist</div>
+                        <div class="team-position">Founder</div>
+                        <p>Chess Master with 7+ years of experience. Founded the club in 2024.</p>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="/api/placeholder/200/200" alt="Club Secretary">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-name">Maria Rodriguez</div>
+                        <div class="team-position">Club Secretary</div>
+                        <p>Organizes events and manages club communications. FIDE-rated player.</p>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="/api/placeholder/200/200" alt="Chess Coach">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-name">David Chen</div>
+                        <div class="team-position">Head Coach</div>
+                        <p>Training sessions and workshops</p>
+                    </div>
+                </div>
+                
+                <!-- <div class="team-card">
+                    <div class="team-img">
+                        <img src="/api/placeholder/200/200" alt="Tournament Director">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-name">Sarah Williams</div>
+                        <div class="team-position">Tournament Director</div>
+                        <p>Certified arbiter who organizes and oversees all club tournaments.</p>
+                    </div>
+                </div> -->
+            </div>
+        </section>
+
+<!-- Events Section -->
+<section id="events" class="container">
+    <h1>Chess Events</h1>
+    <p>Join us for exciting chess tournaments, workshops, and special events throughout the year.</p>
+    
+    <div class="section-links">
+        <a href="events.html" class="btn">View Upcoming/Past Events</a>
+    </div>
+</section>
+
+<!-- Gallery Section -->
+<section id="gallery" class="container">
+    <h1>Photo Gallery</h1>
+    <p>Browse photos from our tournaments, workshops, and club activities.</p>
+    <div class="section-links">
+        <a href="gallery.html" class="btn">Browse Gallery</a>
+    </div>
+</section>
+
+<!-- Gallery Section -->
+<section id="lessons" class="container">
+    <h1>Chess Lessons</h1>
+    <p>Schedule free lessons for anyone interested in learning chess.</p>
+    
+    <div id="lessons-content">
+        <!-- This div will be dynamically updated based on login status -->
+        <div class="loading">Loading lessons content...</div>
+    </div>
+</section>
+
+<!-- tactics Section -->
+<section id="tactics" class="container">
+    <h1>Try tactics</h1>
+    <p>Try some cool tactics.</p>
+    <div style="display: flex; justify-content: center; width: 100%;">
+        <iframe src="https://livetactics.chessbase.com" width="400" height="440"></iframe>
+    </div>
+</section>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Chess Impact. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#">Facebook</a>| 
+                    <a href="#">Instagram</a>|
+                     <a href="#">YouTube</a>
+                </div>
+                <p>Contact us: atharvab850@gmail.com | (555) 123-4567</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Basic form validation and submission handling
+        // document.getElementById('signup-form').addEventListener('submit', function(event) {
+        //     event.preventDefault();
+            
+        //     // In a real website, you would send this data to a server
+        //     alert('Thank you for signing up! You can now log in to your account.');
+        //     this.reset();
+        // });
+        
+        // Mobile menu toggle functionality
+function createMobileMenu() {
+    const nav = document.querySelector('nav');
+    const menuToggle = document.createElement('div');
+    menuToggle.classList.add('menu-toggle');
+    menuToggle.innerHTML = '☰';
+    menuToggle.style.cssText = 'display:none; position:absolute; left:15px; top:10px; font-size:28px; color:#fff; cursor:pointer; z-index:1000; background: rgba(255,255,255,0.25); padding: 5px 10px; border-radius: 5px; text-shadow: 0 1px 2px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.3);';    
+    // Add the menu toggle to the navigation container
+    document.querySelector('nav .container').appendChild(menuToggle);
+    
+    const menuItems = document.querySelector('nav ul');
+    
+    function toggleMenu() {
+        menuItems.classList.toggle('mobile-menu-open');
+        menuToggle.innerHTML = menuItems.classList.contains('mobile-menu-open') ? '✕' : '☰';
+    }
+    
+    menuToggle.addEventListener('click', toggleMenu);
+    
+    function checkScreenSize() {
+        if (window.innerWidth <= 768) {
+            menuToggle.style.display = 'block';
+        } else {
+            menuToggle.style.display = 'none';
+            menuItems.classList.remove('mobile-menu-open');
+        }
+    }
+    
+    window.addEventListener('resize', checkScreenSize);
+    checkScreenSize(); // Run on initial load
+}
+        // Call the function when the page loads
+       window.addEventListener('DOMContentLoaded', createMobileMenu);
+
+// Add this to your existing JavaScript
+window.addEventListener('DOMContentLoaded', function() {
+    // Create home button
+    const homeButton = document.createElement('div');
+    homeButton.className = 'back-to-top-button';
+    homeButton.innerHTML = '<a href="index.html">↑ Top</a>';
+    document.body.appendChild(homeButton);
+    
+    // Show/hide based on scroll position
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            homeButton.classList.add('visible');
+        } else {
+            homeButton.classList.remove('visible');
+        }
+    });
+
+
+});       
+    </script>
+</body>
+</html>

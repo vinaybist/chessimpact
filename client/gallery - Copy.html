@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#4a94d0" id="themeColor">
+    <title>Gallery - Chess Impact</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Chess Impact Logo">
+                </a>
+            </div> 
+                                
+                    <!-- Navigation with constrained width -->
+                    <nav>
+                        <div class="container">
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="index.html#about">About Us</a></li>
+                                <li><a href="index.html#signup">Sign Up</a></li>
+                                <li><a href="index.html#team">Our Team</a></li>
+                                <li><a href="index.html#tactics">Tactics</a></li>
+                                <li><a href="index.html#events">Events</a></li>
+                                <li><a href="gallery.html">Gallery</a></li>
+                                <li><a href="index.html#lessons">Lessons</a></li>
+
+                            </ul>
+                        </div>
+                    </nav>
+            <!-- <li class="nav-right"><a href="#signin" class="signin-btn">Sign-In</a></li>             -->
+            <!-- User profile icon will appear here when logged in -->
+            
+            <div id="profile-container" style="display: none;" class="profile-dropdown">
+                <img id="profile-image" src="images/default-avatar.png" alt="Profile" class="profile-icon">
+                <div class="dropdown-menu">
+                    <div class="dropdown-header">
+                        <span id="user-name">User Name</span>
+                        <span id="user-email">user@example.com</span>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <a href="#profile" class="dropdown-item">My Profile</a>
+                    <a href="#settings" class="dropdown-item">Settings</a>
+                    <a href="#" class="dropdown-item" id="logout-button">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main>
+        <section class="container">
+            <h1>Photo Gallery</h1>
+            <p class="gallery-intro">Browse photos from our tournaments, workshops, and club meetings.</p>
+            <div class="gallery-container">
+                <!-- Gallery Items -->
+                <div class="gallery-item" data-category="tournaments">
+                    <img src="/images/gallery/2024/2024.png" alt="Bluffview Tournament 2024" onerror="this.src='images/logo.png'">
+                    <div class="gallery-caption">
+                        <h3>Bluffview Tournament 2024</h3>
+                        <p>Our annual tournament brings together skilled competitors.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="workshops">
+                    <img src="/images/gallery/workshop/workshop.jpg" alt="Opening Strategies Workshop" onerror="this.src='images/logo.png'">
+                    <div class="gallery-caption">
+                        <h3>Opening Strategies Workshop</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Chess Impact. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#">Facebook</a>| 
+                    <a href="#">Instagram</a>|
+                     <a href="#">YouTube</a>
+                </div>
+                <p>Contact us: atharvab850@gmail.com | (555) 123-4567</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple gallery filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.gallery-filter');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active class on buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter items
+                    const filter = this.getAttribute('data-filter');
+                    
+                    galleryItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
