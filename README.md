@@ -445,23 +445,7 @@ If they include auth.js, make the same change:
 <script src="js/auth.js"></script>
 ```
 
-### Option B: Environment-Based Loading (Advanced)
 
-Add this to your HTML `<head>` section:
-```html
-<script>
-// Auto-detect environment and load appropriate auth file
-if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-    // Local development
-    document.write('<script src="js/auth_local.js"><\/script>');
-    console.log('🧪 Loading LOCAL auth system');
-} else {
-    // Production
-    document.write('<script src="js/auth.js"><\/script>');
-    console.log('🌐 Loading PRODUCTION auth system');
-}
-</script>
-```
 
 ## 🎯 Step 4: Test Your Setup
 
