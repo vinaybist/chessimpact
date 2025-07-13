@@ -4,15 +4,6 @@
 
 Chess Impact is a full-stack chess club website featuring Google OAuth authentication, event management, photo galleries, and member-only features like lesson booking and chess tactics training.
 
-### 🎯 Key Features:
-- **Google OAuth Authentication** with user profiles
-- **Event Management** (tournaments, workshops, meetings)
-- **Photo Gallery** with modal viewer and filtering
-- **Protected Member Content** (lessons, tactics)
-- **Calendly Integration** for lesson scheduling
-- **Responsive Design** for all devices
-- **Visit Tracking** and user analytics
-
 ### 🔧 Technology Stack:
 - **Frontend**: HTML5, CSS3, Vanilla JavaScript
 - **Backend**: Node.js, Express.js
@@ -404,11 +395,189 @@ Once your local setup is working:
 
 ---
 
-## 💡 Development Tips
+****NOTE****
 
-1. **Use Development Mode** (`npm run dev`) for active coding
-2. **Test in Production Mode** (`npm start`) before deploying
-3. **Check Console Logs** for debugging information
-4. **Use Browser DevTools** to inspect authentication flow
-5. **Keep OAuth Code Ready** for production deployment
+# 🧪 Local Testing Setup Guide
+
+## 📁 Step 1: Create auth_local.js
+
+1. **Save the provided code as `client/js/auth_local.js`**
+2. **Keep your original `client/js/auth.js` unchanged**
+
+## 📝 Step 2: Modify HTML Files for Local Testing
+
+### For `index.html`:
+
+Replace this line in the `<head>` section:
+```html
+<!-- PRODUCTION VERSION -->
+<script src="js/auth.js"></script>
+```
+
+With this line for local testing:
+```html
+<!-- LOCAL TESTING VERSION -->
+<script src="js/auth_local.js"></script>
+```
+
+### For `events.html` and `gallery.html`:
+
+If they include auth.js, make the same change:
+```html
+<!-- Change from: -->
+<script src="js/auth.js"></script>
+
+<!-- To: -->
+<script src="js/auth_local.js"></script>
+```
+
+## 🔧 Step 3: Quick Switching Method
+
+### Option A: Manual File Switching
+
+**For Local Development:**
+```html
+<script src="js/auth_local.js"></script>
+```
+
+**For Production:**
+```html
+<script src="js/auth.js"></script>
+```
+
+### Option B: Environment-Based Loading (Advanced)
+
+Add this to your HTML `<head>` section:
+```html
+<script>
+// Auto-detect environment and load appropriate auth file
+if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    // Local development
+    document.write('<script src="js/auth_local.js"><\/script>');
+    console.log('🧪 Loading LOCAL auth system');
+} else {
+    // Production
+    document.write('<script src="js/auth.js"><\/script>');
+    console.log('🌐 Loading PRODUCTION auth system');
+}
+</script>
+```
+
+## 🎯 Step 4: Test Your Setup
+
+### 1. Start your server:
+```bash
+npm run dev
+```
+
+### 2. Open browser:
+```
+http://localhost:3000
+```
+
+### 3. Look for indicators:
+- ✅ **"🧪 LOCAL TESTING MODE"** indicator in top-right corner
+- ✅ **No Google Sign-In buttons** visible
+- ✅ **Test login buttons** in signup section
+
+### 4. Test authentication:
+- Click **"🧪 Test Login as Member"** - logs in as regular user
+- Click **"👑 Test Login as Admin"** - logs in as admin user
+- Both should show profile dropdown and unlock protected content
+
+## 🔍 What You'll See
+
+### Local Testing Features:
+- **🧪 Visual Indicator**: Red badge showing "LOCAL TESTING MODE"
+- **No Google OAuth**: Google sign-in buttons are hidden
+- **Test Buttons**: Two colorful buttons for different user types
+- **Fake Data**: Test users with realistic data
+- **Full Functionality**: All features work without real authentication
+
+### Test Users Created:
+
+#### Regular Member:
+```
+Name: Test User
+Email: test@example.com
+Role: member
+Visit Count: Random (1-50)
+```
+
+#### Admin User:
+```
+Name: Admin User  
+Email: admin@chessimpact.org
+Role: admin
+Visit Count: Random (1-50)
+```
+
+## 📂 File Structure After Setup
+
+```
+client/
+├── js/
+│   ├── auth.js          ← Original (for production)
+│   └── auth.js.local    ← New (for local testing)
+├── index.html           ← Modified to use auth.js.local
+├── events.html          ← Modified to use auth.js.local
+└── gallery.html         ← Modified to use auth.js.local
+```
+
+## 🔄 Switching Between Environments
+
+### For Local Development:
+```html
+<script src="js/auth.js.local"></script>
+```
+- No Google OAuth
+- Test login buttons
+- Fake user data
+- All features work
+
+### For Production Deployment:
+```html
+<script src="js/auth.js"></script>
+```
+- Real Google OAuth
+- Actual user database
+- Production-ready
+
+## 💡 Pro Tips
+
+### 1. **Use Git Ignore**
+Add to `.gitignore` if you don't want to commit local testing files:
+```
+client/js/auth.js.local
+```
+
+### 2. **Quick Environment Switch**
+Create a simple script to switch environments:
+
+**switch-to-local.sh:**
+```bash
+#!/bin/bash
+sed -i 's/auth\.js/auth.js.local/g' client/*.html
+echo "🧪 Switched to LOCAL testing mode"
+```
+
+**switch-to-prod.sh:**
+```bash
+#!/bin/bash
+sed -i 's/auth\.js\.local/auth.js/g' client/*.html
+echo "🌐 Switched to PRODUCTION mode"
+```
+
+### 3. **Environment Variable Method**
+If using a build system, you could use environment variables:
+```html
+<script src="js/auth<%= process.env.NODE_ENV === 'development' ? '.local' : '' %>.js"></script>
+```
+
+## 🚨 Important
+
+- **Always use `auth.js` for production**
+- **Never deploy with `auth.js.local`**
+- **Test both environments before deploying**
+- **Keep your Google OAuth credentials secure**
 
